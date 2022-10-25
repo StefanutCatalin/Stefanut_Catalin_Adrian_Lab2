@@ -19,5 +19,7 @@ namespace Stefanut_Catalin_Adrian_Lab2.Data
         public DbSet<Stefanut_Catalin_Adrian_Lab2.Models.Publisher> Publisher { get; set; }
 
         public DbSet<Stefanut_Catalin_Adrian_Lab2.Models.Author> Author { get; set; }
+
+        public DbSet<Stefanut_Catalin_Adrian_Lab2.Models.Category> Category { get; set; }
     }
 }
