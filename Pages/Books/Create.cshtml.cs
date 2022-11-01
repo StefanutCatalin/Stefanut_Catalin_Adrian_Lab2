@@ -23,7 +23,7 @@ namespace Stefanut_Catalin_Adrian_Lab2.Pages.Books
         {
             ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID",
 "PublisherName");
-            ViewData["Author    ID"] = new SelectList(_context.Set<Publisher>(), "ID",
+            ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "ID",
 "FullName");
             var book = new Book();
             book.BookCategories = new List<BookCategory>();
@@ -48,33 +48,20 @@ namespace Stefanut_Catalin_Adrian_Lab2.Pages.Books
                     newBook.BookCategories.Add(catToAdd);
                 }
             }
-            if (await TryUpdateModelAsync<Book>(
-            newBook,
-            "Book",
-            i => i.Title, i => i.Author,
-            i => i.Price, i => i.PublishingDate, i => i.PublisherID))
-            {
+         //   if (await TryUpdateModelAsync<Book>(
+          //  newBook,
+          //  "Book",
+         //   i => i.Title, i => i.Author,
+         //   i => i.Price, i => i.PublishingDate, i => i.PublisherID))
+            
                 _context.Book.Add(newBook);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
-            }
+                return RedirectToPage("./Index"); 
+            
             PopulateAssignedCategoryData(_context, newBook);
             return Page();
         }
 
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
-        {
-          if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.Book.Add(Book);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
         }
-    }
 }
