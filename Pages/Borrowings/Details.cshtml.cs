@@ -36,7 +36,10 @@ namespace Stefanut_Catalin_Adrian_Lab2.Pages.Borrowings
             else 
             {
                 Borrowing = borrowing;
-            }
+                var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == borrowing.BookID);
+                var member = await _context.Member.FirstOrDefaultAsync(m => m.ID == borrowing.MemberID);
+             }
+
             return Page();
         }
     }
